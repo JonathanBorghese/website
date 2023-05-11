@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <div className="Navbar">
       <button>
-        <Link to="/" style={linkStyle}>Resume</Link>
+        <Link to="/resume" style={linkStyle}>Resume</Link>
       </button>
       <button>
         <Link to="/" style={linkStyle}>Projects</Link>
