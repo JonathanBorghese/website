@@ -7,8 +7,8 @@ import Resume from './Resume.js';
 function Main() {
   return (
     <Routes>
-      <Route path='/' element={<Home />}></Route>
-      <Route path='/resume' element={<Resume />}></Route>
+      <Route path='./' element={<Home />}></Route>
+      <Route path='./resume' element={<Resume />}></Route>
     </Routes>
   );
 }

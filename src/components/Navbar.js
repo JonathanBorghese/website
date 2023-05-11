@@ -14,13 +14,13 @@ function Navbar() {
   return (
     <div className="Navbar">
       <button>
-        <Link to="/resume" style={linkStyle}>Resume</Link>
+        <Link to="./resume" style={linkStyle}>Resume</Link>
       </button>
       <button>
-        <Link to="/" style={linkStyle}>Projects</Link>
+        <Link to="./" style={linkStyle}>Projects</Link>
       </button>
       <button>
-        <Link to="/" style={linkStyle}>Home</Link>
+        <Link to="./" style={linkStyle}>Home</Link>
       </button>
     </div>
   );
