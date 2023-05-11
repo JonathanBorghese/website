@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import Avatar from '../components/Avatar.js';
+//import { Link } from 'react-router-dom';
 
 function Home() {
   return (

@@ -6,7 +6,7 @@ import pic from '../images/selfie.jpg';
 function Avatar() {
   return (
     <div>
-      <img src={pic} className="pic" />
+      <img src={pic} className="pic" alt=""/>
     </div>
   );
 }
