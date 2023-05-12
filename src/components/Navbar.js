@@ -22,7 +22,7 @@ function Navbar() {
       </button>
       */}
       <button>
-        <Link to="/" style={linkStyle}>Home</Link>
+        <Link to="./" style={linkStyle}>Home</Link>
       </button>
     </div>
   );
