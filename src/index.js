@@ -21,9 +21,7 @@ const router = createBrowserRouter([
         element: <Resume />,
       },
     ],
-  }, {
-    basename: '/website',
-  },
+  }, { basename: process.env.PUBLIC_URL },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render (
