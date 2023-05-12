@@ -10,12 +10,12 @@ import Resume from './routes/Resume';
 
 const router = createBrowserRouter([
   {
-    path: '',
+    path: process.env.PUBLIC_URL + '/',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '', 
+        path: '',
         element: <Home />
       },
       {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <Resume />,
       },
     ],
-  }, { basename: process.env.PUBLIC_URL },
+  }, { basename: '' },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render (

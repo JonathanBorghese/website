@@ -1,9 +1,11 @@
 import React from 'react';
 
+const st = process.env.PUBLIC_URL;
+
 function ErrorPage() {
     return (
         <>
-            <h1>Error :(</h1>
+            <h1>Error :( {st}</h1>
         </>
     );
 }
