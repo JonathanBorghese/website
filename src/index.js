@@ -10,7 +10,7 @@ import Resume from './routes/Resume';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
