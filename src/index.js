@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './css/index.css';
 import Root from './routes/Root';
+import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
 import Resume from './routes/Resume';
 
@@ -11,9 +12,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '',
+        path: '', 
         element: <Home />
       },
       {
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render (
-
+  <React.StrictMode>
     <RouterProvider router={router} />
-
+  </React.StrictMode>
 );
