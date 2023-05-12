@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar.js';
 function Root() {
   return (
     <div>
-      <Navbar />
+      {/*<Navbar />*/}
       <Outlet /> {/* where the child routes will be rendered */}
     </div>
   );
