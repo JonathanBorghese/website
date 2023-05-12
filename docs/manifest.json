@@ -1,9 +1,0 @@
-{
-  "short_name": "JB Site",
-  "name": "Jonathan Borghese Website",
-  "icons": [],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#333333",
-  "background_color": "#ffffff"
-}
