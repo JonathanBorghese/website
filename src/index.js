@@ -7,9 +7,11 @@ import Root from './routes/Root';
 import Home from './routes/Home';
 import Resume from './routes/Resume';
 
+const basename = '/website';
+
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: basename,
     element: <Root />,
     children: [
       {
@@ -21,9 +23,6 @@ const router = createBrowserRouter([
         element: <Resume />,
       },
     ],
-  },
-  {
-    basename: 'website',
   },
 ]);
 
