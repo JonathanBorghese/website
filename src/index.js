@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './css/index.css';
+import Blog from './routes/Blog'
 import Root from './routes/Root';
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: 'resume',
         element: <Resume />,
       },
+      {
+        path: 'blog',
+        element: <Blog />
+      }
     ],
   }, { basename: '' },
 ]);
