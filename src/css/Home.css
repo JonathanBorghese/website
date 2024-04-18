@@ -5,9 +5,6 @@
   margin-right: auto;
   padding-left: 10ch;
   padding-right: 10ch;
-
-  border-style: solid;
-  border-color: aqua;
 }
 
 .skills-div {
@@ -18,7 +15,10 @@
 
 .skills-div > div {
   display:block;
-  background-color: aquamarine;
+  background: linear-gradient(#A0C3D5, #9198e5);
+
+  border-radius: 25px;
+  box-shadow: 2px 2px black;
 
   text-align: center;
   padding: 10px;
