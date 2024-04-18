@@ -35,8 +35,8 @@ jobs:
         uses: actions/configure-pages@v5
       - uses: actions/setup-node@v4
       - name: Npm start
-        uses: npm install
-      - uses: npm run build
+        run: npm install
+      - run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
