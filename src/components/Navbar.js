@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../css/Navbar.css';
+import '../css/Component.css';
 
 const linkStyle = {
   textAlign: 'center',
@@ -13,15 +13,15 @@ const linkStyle = {
 function Navbar() {
   return (
     <div className="Navbar">
-      <button>
+      <button className="nav-button">
         <Link to='resume' style={linkStyle}>Resume</Link>
       </button>
       {
-      <button>
+      <button className="nav-button">
         <Link to='blog' style={linkStyle}>Blog</Link>
       </button>
       }
-      <button>
+      <button className="nav-button">
         <Link to='' style={linkStyle}>Home</Link>
       </button>
     </div>

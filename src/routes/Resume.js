@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Resume.css';
 
-import resume from '../JonathanBorghese_Resume.pdf';
+import resume from '../images/JonathanBorghese_Resume.pdf';
 
 function Resume() {
     return (

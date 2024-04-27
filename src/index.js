@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './css/index.css';
-import Blog from './routes/Blog'
+import SLPBlog from './routes/Blogs/SLP'
 import Root from './routes/Root';
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'blog',
-        element: <Blog />
+        element: <SLPBlog />
       }
     ],
   }, { basename: '' },

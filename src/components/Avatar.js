@@ -1,12 +1,12 @@
 import React from 'react';
 
-import '../css/Avatar.css';
+import '../css/Component.css';
 import pic from '../images/selfie.jpg';
 
 function Avatar() {
   return (
     <div>
-      <img src={pic} className="pic" alt=""/>
+      <img src={pic} className="avatar-pic" alt=""/>
     </div>
   );
 }
