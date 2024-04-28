@@ -1,4 +1,23 @@
 
+/* Code Block */
+.CodeBlockClass {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+    font-size:.75em;
+    line-height:1.25em;
+    background-color:white;
+    border-color:black;
+    border-radius:5px;
+    border-style: solid;
+    border-width: 1px;
+
+    padding:.5em;
+    border-radius: 6px;
+    overflow:scroll;
+
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
 
 /* ImageWithText Component */
 .TextImageDiv {

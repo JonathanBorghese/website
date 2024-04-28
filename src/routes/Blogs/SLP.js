@@ -2,10 +2,11 @@ import React from 'react'
 
 import ImageWithText from '../../components/ImageWithText.js'
 import EoFPadding from '../../components/EoFPadding.js'
+import CodeBlock from '../../components/CodeBlock.js'
 
 import '../../css/Blog.css'
 
-const images = require.context('../../images/SLP_Blog', true)
+const images = require.context('../../images/SLP_Blog', true);
 
 function SLPBlog() {
   return (
@@ -80,18 +81,66 @@ function SLPBlog() {
         <p>Now we iteratively scale the weights by the gradient to train the model. Here is the pseudo code:</p>
 
 
-        <div className='pseudo-code'>
-          <code>
-            (show python code here)
-          </code>
-        </div>
+        <CodeBlock code={`#   Gradient Decent Implementation
+#   Features and Labels should be from the training set
+def fit(self, training_features, training_labels, max_epochs=100, learning_rate=.01):
+
+    if len(training_features) != len(training_labels):
+        print("invalid data")
+        return
+    
+    # initialize weights
+    d = len(training_features[0])
+    w = np.random.normal(0.5, 0.2, size=(d,))
+
+    for i in range(max_epochs):
+        
+        # every 10 epochs
+        if i % 10 == 0:
+            y = self.forward_prop(training_features, w)
+            loss = self.MSE_loss(y, training_labels, w)
+            print("Epoch:", i, "\tLoss:", loss)
+
+            # learning rate step decay
+            learning_rate *= .5
+
+        # calculate prediction vector for entire dataset
+        y_hat = self.forward_prop(training_features, w)
+
+        # compute gradient with added weight constraints
+        gradient = np.matmul(np.subtract(y_hat, training_labels), training_features) + w
+
+        # weight update
+        w -= learning_rate * gradient
+
+    return w`} />
 
         <p> regularization 
           added to discourage large weights and have better generalization
         </p>
 
-        <EoFPadding length='20' />
+        Weights:
 
+        <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{display:'flex', width:'100%', maxWidth:'100%'}}>
+          <img src={images('./w_0.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_1.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_2.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_3.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_4.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          </div>
+          <div>
+          <img src={images('./w_5.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_6.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_7.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_8.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          <img src={images('./w_9.svg')} style={{width:'20%', height:'auto'}} alt="" />
+          </div>
+        </div>
+
+        <p></p>
+
+        <EoFPadding length='20' />
       </div>
 
     </>
