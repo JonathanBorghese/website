@@ -1,6 +1,7 @@
 import React from 'react'
 
 import ImageWithText from '../../components/ImageWithText.js'
+import EoFPadding from '../../components/EoFPadding.js'
 
 import '../../css/Blog.css'
 
@@ -89,24 +90,10 @@ function SLPBlog() {
           added to discourage large weights and have better generalization
         </p>
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-
+        <EoFPadding length='20' />
 
       </div>
+
     </>
   );
 }
