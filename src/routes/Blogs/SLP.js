@@ -45,15 +45,17 @@ function SLPBlog() {
         <p>Gradient descent requires the derivative of the loss function with respect to the weights. Here is the derivation for the example network:</p>
 
         <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
-          <img className="blog-img" src={images('./Loss.svg')} alt="Loss"/>
+          <img className="blog-slp-function-img" src={images('./Loss.svg')} alt="Loss"/>
 
           <div style={{display:'flex', justifyContent:'flex-start', flexDirection:'column', alignItems:'flex-start', marginInline:'auto'}}>
-            <img className="blog-img" src={images('./Loss_Derivative_Derivation_1.svg')} alt="Loss_Derivative_Derivation_1" />
-            <img className="blog-img" src={images('./Loss_Derivative_Simplified.svg')} alt="Loss_Derivative_Simplified" />
+            <img className="blog-slp-function-img" src={images('./Loss_Derivative_Derivation_1.svg')} alt="Loss_Derivative_Derivation_1" />
+            <img className="blog-slp-function-img" src={images('./Loss_Derivative_Simplified.svg')} alt="Loss_Derivative_Simplified" />
           </div>
         </div>
 
-        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative. Once the derivative of the Loss function has been calculated, the weights can be adjusted.</p>
+        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative.</p>
+        
+        <p>Once the derivative of the Loss function has been calculated, the weights can be adjusted.</p>
 
         <ImageWithText image={images('./Weight_Update.svg')} width='500px' text="Weight adjustment is scaled by α, the learning rate." />
 
@@ -61,46 +63,39 @@ function SLPBlog() {
         
         <p>Gradient Descent is an art and there is a lot of nuance being left out for simplicity. I suggest reading about <i>Generalization</i>, <i>Stochastic Gradient Descent</i>, and <i>Learning Rate Scheduling</i> to learn more.</p>
 
-        <h3>Handwriting Predictor Example</h3>
-
         <p>Now let's put what we've learned to use!</p>
 
-        <p>In this example, we will be making a One-vs-Rest model to classify an image as one of the 10 digits. Each model will be an SLP using a MSE loss function with a Sigmoid activation function. Each model will determine if the current image is the selected digit or not. For example, there will be a model just to see if the digit is 0.</p>
+        <h3>Handwriting Predictor Example</h3>
+
+        <p>In this example, a One-vs-Rest model is made to classify an image as one of the 10 digits. One-vs-Rest model means that there will be 10 different models, each outputting how confident it is that the input image is its particular digit.</p>
 
         <h4>Data Preparation</h4>
 
-        <p>The first thing we need to do is prepare the data. The input to the network is a 785 length array of each pixel's intensity, including a bias term. The data is normalized so that each value ranges from [0, 1) rather than [0, 255).</p>
+        <p>The <a href='https://www.kaggle.com/datasets/hojjatk/mnist-dataset'><i>MNIST database of handwritten digits</i></a> is the data set used. It consists of 70,000, 28x28 pixel images labeled and  partitioned into testing and training sets.</p>
+
+        <p>The first thing we need to do is prepare the data. The input to the network is a 784 length array of each pixel's intensity (+1 for the bias term). The data is normalized so that each value ranges from [0, 1) rather than [0, 255).</p>
 
         <ImageWithText image={images('./Feature_Normalization.svg')} width='105%' text='A demonstration of how the data is normalized. Smaller sample images are used, the actual size of the data is 28x28' textWidth="50%"/>
 
 
-        <p>We also prepare the label vector for each of the 10 models. We want each model to output 1 for its corresponding digit and 0 otherwise. For example, we want our function predicting '3' to output 1 for every label that is 3 and output 0 otherwise.</p>
+        <p>Ten label vectors need to be made, one for each model. We want each network's output to be 1 for its corresponding digit and 0 otherwise. For example, the following labels would be used to train the model classifying 4.</p>
 
         <code>Y = [7, 2, 1, 0, 4, 1, 4, ...] → [0, 0, 0, 0, 1, 0, 1, ...]</code>
 
-        <p>Now we iteratively scale the weights by the gradient to train the model. Here is the pseudo code:</p>
+        <p>Now Gradient Descent is performed using the training set to calibrate the weights.</p>
 
 
         <CodeBlock code={`#   Gradient Decent Implementation
 #   Features and Labels should be from the training set
 def fit(self, training_features, training_labels, max_epochs=100, learning_rate=.01):
-
-    if len(training_features) != len(training_labels):
-        print("invalid data")
-        return
     
     # initialize weights
     d = len(training_features[0])
     w = np.random.normal(0.5, 0.2, size=(d,))
 
     for i in range(max_epochs):
-        
         # every 10 epochs
         if i % 10 == 0:
-            y = self.forward_prop(training_features, w)
-            loss = self.MSE_loss(y, training_labels, w)
-            print("Epoch:", i, "\tLoss:", loss)
-
             # learning rate step decay
             learning_rate *= .5
 
@@ -108,18 +103,14 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
         y_hat = self.forward_prop(training_features, w)
 
         # compute gradient with added weight constraints
-        gradient = np.matmul(np.subtract(y_hat, training_labels), training_features) + w
+        gradient = np.matmul(np.subtract(y_hat, training_labels), training_features) + w  
 
         # weight update
         w -= learning_rate * gradient
 
     return w`} />
 
-        <p> regularization 
-          added to discourage large weights and have better generalization
-        </p>
-
-        Weights:
+        <p>Here are my results for each of the model's weights:</p>
 
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'flex', width:'100%', maxWidth:'100%'}}>
@@ -138,7 +129,15 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
           </div>
         </div>
 
-        <p></p>
+        <p>These weight arrays are calibrated to detect a specific digit. Each pixel is a weight value with the brighter the pixels indicating larger values and darker pixels indicating negative values.</p>
+
+        <p>Once the 10 networks are trained, an input feature can be fed into them to get their outputs. The softmax function is then used on the vector of outputs be able to interpret them as probabilities for each digit</p>
+
+        <ImageWithText image={images('./Softmax.svg')} text='' width='500px' textWidth='50%' />
+
+        <h4>Example:</h4>
+
+        <ImageWithText image={images('./SLP_Flowchart.svg')} text='' width='100%' />
 
         <EoFPadding length='20' />
       </div>

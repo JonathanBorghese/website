@@ -5,7 +5,12 @@ class EoFPadding extends React.Component {
     render() {
 
         let count = 0;
-        const space = Array(parseInt(this.props.length)).map((x) => {<br key={count++} />})
+        let a = Array(parseInt(this.props.length))
+        for (let i = 0; i < this.props.length; i++) {
+            a[i] = count++;
+        }
+
+        const space = a.map((x) => <br key={x} />)
 
         return <div>
             {space}

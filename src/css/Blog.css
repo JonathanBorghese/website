@@ -4,14 +4,10 @@
     margin-inline: auto;
     width: 45%;
 
-
     padding: 5%;
-    /* border: 3px solid teal; */
     padding: 10px;
-
     font-size: 1.25em;
     line-height:1.25em;
-
 }
 
 @media screen and (max-width: 992px){
@@ -20,7 +16,8 @@
     }
 }
 
-.blog-img {
+/* SLP_Blog */
+.blog-slp-function-img {
     height:2em;
     margin-top:.25em;
     margin-bottom:.25em;
