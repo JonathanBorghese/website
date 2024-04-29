@@ -15,33 +15,16 @@ import w9 from './SLP_Data/w9.js';
 
 import '../css/Component.css';
 
-function indexOfMax(arr) {
-    if (arr.length === 0) {
-        return -1;
-    }
-
-    var max = arr[0];
-    var maxIndex = 0;
-
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            maxIndex = i;
-            max = arr[i];
-        }
-    }
-
-    return maxIndex;
-}
-
 class SLPPlayground extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.prob = Array(10);
+        this.prob.forEach((val) => val = 0);
 
         this.state = {
-            prob: Array(0,0,0,0,0,0,0,0,0,0)
+            prob: this.prob
         };
     }
 
@@ -120,8 +103,6 @@ class SLPPlayground extends React.Component {
 
         weights.forEach((element, i) => dots[i] = dot(element, X));
 
-        let prob = Array(weights.length);
-
         dots.forEach((element, i) => this.prob[i] = Math.exp(element))
 
         let denom = 0;
@@ -132,8 +113,6 @@ class SLPPlayground extends React.Component {
         for (let i = 0; i < this.prob.length; i++) {
             this.prob[i] /= denom;
         }
-
-        let prediction = indexOfMax(dots);
 
         this.setState((prevState) => ({
             prob: this.prob
