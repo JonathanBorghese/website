@@ -46,7 +46,7 @@ class SLPPlayground extends React.Component {
     }
 
     componentDidMount() {
-        this.ctx = this.myRef.getContext('2d');
+        this.ctx = this.myRef.getContext('2d', { willReadFrequently: true});
         let div = this.myDiv.getBoundingClientRect();
 
         this.myRef.width = div.width;
