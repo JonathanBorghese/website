@@ -9,11 +9,9 @@ import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
 import Resume from './routes/Resume';
 
-//process.env.PUBLIC_URL
-
 const router = createBrowserRouter([
   {
-    path: '/website',
+    path: process.env.PUBLIC_URL,
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
