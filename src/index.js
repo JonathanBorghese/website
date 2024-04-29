@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <SLPBlog />
       }
     ],
-  }, { basename: '' },
+  }, { basename: 'website' },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render (
