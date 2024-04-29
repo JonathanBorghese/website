@@ -1,4 +1,17 @@
 
+/* Canvas */
+.Canvas {
+    border-style:solid;
+    border-color: black;
+    border-width: 2px;
+
+    max-width: 100%;
+    width: 500px;
+    height: 500px;
+
+}
+
+
 /* Code Block */
 .CodeBlockClass {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -38,8 +51,8 @@
 .TextImageSpan {
     font-size: .75em;
     line-height: 1em;
-    color:darkgray;
-
+    color:rgb(70, 70, 70);
+    text-align:center;
 }
 
 

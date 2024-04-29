@@ -3,6 +3,7 @@ import React from 'react'
 import ImageWithText from '../../components/ImageWithText.js'
 import EoFPadding from '../../components/EoFPadding.js'
 import CodeBlock from '../../components/CodeBlock.js'
+import Canvas from '../../components/Canvas.js'
 
 import '../../css/Blog.css'
 
@@ -75,7 +76,7 @@ function SLPBlog() {
 
         <p>The first thing we need to do is prepare the data. The input to the network is a 784 length array of each pixel's intensity (+1 for the bias term). The data is normalized so that each value ranges from [0, 1) rather than [0, 255).</p>
 
-        <ImageWithText image={images('./Feature_Normalization.svg')} width='105%' text='A demonstration of how the data is normalized. Smaller sample images are used, the actual size of the data is 28x28' textWidth="50%"/>
+        <ImageWithText image={images('./Feature_Normalization.svg')} width='105%' text='A demonstration of how the data is normalized. The actual image size is 28x28' textWidth="50%"/>
 
 
         <p>Ten label vectors need to be made, one for each model. We want each network's output to be 1 for its corresponding digit and 0 otherwise. For example, the following labels would be used to train the model classifying 4.</p>
@@ -110,6 +111,8 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
 
     return w`} />
 
+        <a href='https://github.com/JonathanBorghese/SLP_Playground'>Github Repository</a>
+
         <p>Here are my results for each of the model's weights:</p>
 
         <div style={{display:'flex', flexDirection:'column'}}>
@@ -131,17 +134,18 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
 
         <p>These weight arrays are calibrated to detect a specific digit. Each pixel is a weight value with the brighter the pixels indicating larger values and darker pixels indicating negative values.</p>
 
-        <p>Once the 10 networks are trained, an input feature can be fed into them to get their outputs. The softmax function is then used on the vector of outputs be able to interpret them as probabilities for each digit</p>
-
-        <ImageWithText image={images('./Softmax.svg')} text='' width='500px' textWidth='50%' />
-
-        <h4>Example:</h4>
+        <p>Now that the 10 networks are trained, any input can be sent into each network to get the outputs. These outputs are then input to the <i>softmax</i> function. This function helps interpret the output vector as a list of probabilities for each digit.</p>
 
         <ImageWithText image={images('./SLP_Flowchart.svg')} text='' width='100%' />
 
+        <p>The more overlap there is between the input feature, X, and the weights, W, the larger the output number is and the higher the resulting probability.</p>
+
+        <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
+
+        <Canvas width='500' />
+
         <EoFPadding length='20' />
       </div>
-
     </>
   );
 }
