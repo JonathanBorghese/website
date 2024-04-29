@@ -22,7 +22,7 @@ function Navbar() {
       </button>
       }
       <button className="nav-button">
-        <Link to='' style={linkStyle}>Home</Link>
+        <Link to='home' style={linkStyle}>Home</Link>
       </button>
     </div>
   );
