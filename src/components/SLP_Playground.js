@@ -21,7 +21,10 @@ class SLPPlayground extends React.Component {
         super(props);
 
         this.prob = Array(10);
-        this.prob.forEach((val) => val = 0);
+
+        for (let i = 0; i < this.prob.length; i++) {
+            this.prob[i] = 0;
+        }
 
         this.state = {
             prob: this.prob
