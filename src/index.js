@@ -11,13 +11,14 @@ import Resume from './routes/Resume';
 
 const router = createBrowserRouter([
   {
-    path: 'website',
+    path: process.env.PUBLIC_URL,
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: '',
-        element: <Home />
+        element: <Home />,
+        index: true
       },
       {
         path: 'resume',
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
         element: <SLPBlog />
       }
     ],
-  }, { basename: process.env.PUBLIC_URL },
+  }, { basename: '' },
 ]);
 
 
