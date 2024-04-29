@@ -11,7 +11,7 @@ import Resume from './routes/Resume';
 
 const router = createBrowserRouter([
   {
-    path: process.env.PUBLIC_URL,
+    path: 'website',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <SLPBlog />
       }
     ],
-  }, { basename: '' },
+  }, { basename: process.env.PUBLIC_URL },
 ]);
 
 
