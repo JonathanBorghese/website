@@ -149,16 +149,20 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
 
         <p>These weight arrays are calibrated to detect a specific digit. The dot product between the input image and the weights is taken. The greater the overlap between the weights, the larger the result is. The vector of all 10 results is then fed into the <i>softmax</i> function which outputs a probability vector. Last, the digit with the highest probability is selected as the class.</p>
 
-        <ImageWithText image={images('./SLP_Flowchart.svg')} text='' width='100%' />
-
-        <p>The more overlap there is between the input feature, X, and the weights, W, the larger the output number is and the higher the resulting probability.</p>
+        <ImageWithText image={images('./SLP_Flowchart.svg')} text='The more overlap there is between the input feature, X, and the weights, W, the larger the output number is and the higher the resulting probability' width='100%' />
+        <br />
 
         <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
 
         <SLPPlayground width='500' />
 
+        <p>This network works best when the digit is the correct size and centered on the canvas because that is how the training data was preprocessed.</p>
 
-        <p>Someone observant would notice that the <i>Softmax</i> activation function used for the output layer is not nessesary.</p>
+        <h3>Final Thoughts</h3>
+
+        <p>You might notice that the <i>Softmax</i> activation function used for the output layer is not necessary as the largest resulting dot product will also result in the largest probability. This is true for this network because of its simplicity, however, most models are non-linear and this may not hold anymore.</p>
+
+        <p>Hopefully I've given some understanding of how neural networks work. There are ML libraries that make creating and training models much easier. I would suggest <i>Tensorflow</i> or <i>Scikit Learn</i> for your ML adventures.</p>
 
         <p>Fun Fact, according to the <b>Universal Approximation Theorem</b>, any function can be represented as an artificial neural network! <i style={{fontSize:'.75em'}}>(given enough complexity)</i></p>
 
