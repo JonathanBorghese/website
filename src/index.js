@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 import './css/index.css';
 import SLPBlog from './routes/Blogs/SLP'
@@ -27,6 +27,10 @@ const router = createHashRouter([
       {
         path: 'blog',
         element: <SLPBlog />
+      }, 
+      {
+        path: '*',
+        element: <Navigate to='/' />
       }
     ],
   }, { basename: process.env.PUBLIC_URL },
