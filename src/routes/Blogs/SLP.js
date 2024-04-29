@@ -23,23 +23,33 @@ function SLPBlog() {
           SLP Blog
         </div>
 
-        <h3>Introduction</h3>
+        <h2>Introduction</h2>
 
-        <p>Machine Learning Techniques are essentially function approximations. Say you want to predict the price of a house given its size, age, location. What you are really looking for is the correlation between each input on the output. This correlation is represented through the <i>weights</i> of an ANN.  </p>
+        <p>Machine Learning simply put is the art of approximating functions. Say you want to predict the price of a house given its size, age, location. How much do these variables effect the price of the house? These relationships between variables are what an <i>artificial neural network (ANN)</i> "learns" and manifests through the <i>weights</i> of the network.</p>
 
         <ImageWithText image={images('./SLP.svg')} text='Structure of a Single Layer Perceptron' width='400px'/>
 
-        <p>This is a single layer perceptron, the simplest form of a neural network consisting of a single neuron. The input, X, is scaled by the weights, W, which are then added up and sent to activation function, σ, to get the predicted output.</p>
+        <p>This is a single layer perceptron, the simplest form of an ANN. It consists of the input layer, followed by a single layer of neurons for the output layer. I The input, X, is scaled by the weights, W, which are then added up and sent to an activation function, σ, to get the predicted output.</p>
 
-        <ImageWithText image={images('./Sigmoid.svg')} text='Activation functions are added to ANN nodes to introduce non-linearity and to format the outputs.' width='400px' textWidth='50%'/>
+        <p>Here are some common examples of activation functions:</p>
 
-        <p>By modifying the weights, this network can classify any dataset that is linearly separable. If the architecture was more complex, this network could classify datasets that are not linearly separable. In fact, according to the <i>Universal Approximation Theorem</i>, <b>any</b> function can be represented as a neural network! In order to utilize this potential, the weights of the network need to be calibrated. That is where Gradient Descent comes in.</p>
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <ImageWithText image={images('./Sigmoid.svg')} text='Sigmoid Activation Function. Used in output layers for binary classification cases' width='90%' textWidth='90%'/>
+          <ImageWithText image={images('./Relu.svg')} text='Rectified Linear Unit. Typically used in hidden layers' width='90%' textWidth='90%'/>
+        </div>
 
-        <h3>Gradient Descent</h3>
+        <p>The activation functions used depend on the application of the network. A <i>sigmoid</i> or <i>tanh</i> activation function may be used for binary classification cases because of their clamped outputs. For multi-classification, the <i>softmax</i> function is a popular option as its outputs can be interpreted as probabilities for each class.</p>
 
-        <p>Gradient Descent is a method of minimizing a function by iteratively subtracting the gradient. The function that is minimized is called the Loss function. This function quantifies how well the network is performing. <b>Mean Square Error (MSE)</b>, function is a popular choice among neural networks.</p>
+        <p>The training process involves modifying the weights of a network in order to fit the data given to it. Single layer networks can classify datasets that are linearly separable, however, if hidden layers are introduced, non-linear relationships can be found as well. But how does the network "learn" the optimal weight vectors? That is where Gradient Descent comes in.</p>
 
-        <ImageWithText image={images('./MSE.svg')} text='Mean Squared Error loss function' width='400px' />
+        <h2>Gradient Descent</h2>
+
+        <p>Gradient Descent is a method of minimizing a function by iteratively subtracting the input by the gradient, which lowers the output. The function that is minimized is called the <i>Loss function</i> and the input to the loss function are the weights. The loss function quantifies how well the network is performing, expressed as a number. <b>Mean Square Error (MSE)</b>, function is a popular choice among neural networks.</p>
+
+        <div style={{display:'flex', justifyContent:'center'}}>
+          <ImageWithText image={images('./MSE.svg')} text='Mean Squared Error loss' width='400px' />
+          <ImageWithText image={images('./CrossEntropy.svg')} text='Muli-Class Cross Entropy loss' width='90%' />
+        </div>
 
         <p>Say for example we have 100 data points and their expected output, the MSE would be the average difference between the expected output and the output of the network, squared. The closer the output of the network is to expected output, the lower the overall loss is. By minimizing the loss function, we are maximizing the network's correct outputs.</p>
 
@@ -54,23 +64,23 @@ function SLPBlog() {
           </div>
         </div>
 
-        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative.</p>
-        
-        <p>Once the derivative of the Loss function has been calculated, the weights can be adjusted.</p>
+        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative. The direction of the gradient is the most important part, it is scaled by the <i>Learning Rate</i> of the model.</p>
 
-        <ImageWithText image={images('./Weight_Update.svg')} width='500px' text="Weight adjustment is scaled by α, the learning rate." />
+        <ImageWithText image={images('./Weight_Update.svg')} width='500px' text="Weight adjustment is scaled by α, the learning rate" />
 
-        <p>By subtracting the weights with their derivative, the Loss function decreases. A single <i>epoch</i> has passed once the entire training dataset has been used, however it takes many iterations over the dataset for the loss to converge.</p>
+        <p>By subtracting the weights with their derivative, the Loss function decreases. Single inputs, mini-batches, or even the entire dataset can be used to calculate the gradient at a time. One <i>epoch</i> has passed once the entire training dataset has been used for gradient calculations. To train a network, it takes many epochs for the loss to stabilize. Eventually, a minima will be reached <i style={{fontSize:'.75em'}}>(or close to it).</i></p>
         
         <p>Gradient Descent is an art and there is a lot of nuance being left out for simplicity. I suggest reading about <i>Generalization</i>, <i>Stochastic Gradient Descent</i>, and <i>Learning Rate Scheduling</i> to learn more.</p>
 
         <p>Now let's put what we've learned to use!</p>
 
-        <h3>Handwriting Predictor Example</h3>
+        <h2>Handwriting Digit Classifier</h2>
 
-        <p>In this example, a One-vs-Rest model is made to classify an image as one of the 10 digits. One-vs-Rest model means that there will be 10 different models, each outputting how confident it is that the input image is its particular digit.</p>
+        <p>Let's try to make an ANN model that can tell which digit has been written down. The first step is choosing the architecture of the model. The input will be an array of pixel intensities and the output should be a probability vector of the classes. The <i>softmax</i> activation function is a good fit as it excels with classification problems. Last, <i>argmax</i> chooses the class with the hights probability.</p>
 
-        <h4>Data Preparation</h4>
+        <ImageWithText image={images('./NetworkDiagram.svg')} width='100%' text='' />
+
+        <h3>Data Preparation</h3>
 
         <p>The <a href='https://www.kaggle.com/datasets/hojjatk/mnist-dataset'><i>MNIST database of handwritten digits</i></a> is the data set used. It consists of 70,000, 28x28 pixel images labeled and  partitioned into testing and training sets.</p>
 
@@ -104,16 +114,21 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
         y_hat = self.forward_prop(training_features, w)
 
         # compute gradient with added weight constraints
-        gradient = np.matmul(np.subtract(y_hat, training_labels), training_features) + w  
+        gradient = np.matmul(np.subtract(y_hat, training_labels), training_features)  
 
         # weight update
         w -= learning_rate * gradient
+
+        # weight constraint
+        w = w / np.sqrt(np.sum(w**2))
 
     return w`} />
 
         <a href='https://github.com/JonathanBorghese/SLP_Playground'>Github Repository</a>
 
-        <p>Here are my results for each of the model's weights:</p>
+        <span style={{display:'flex', justifyContent:'center'}}>
+          <p style={{alignSelf:'center'}}>Here is a visual representation of each model's weights:</p>
+        </span>
 
         <div style={{display:'flex', flexDirection:'column'}}>
           <div style={{display:'flex', width:'100%', maxWidth:'100%'}}>
@@ -132,9 +147,7 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
           </div>
         </div>
 
-        <p>These weight arrays are calibrated to detect a specific digit. Each pixel is a weight value with the brighter the pixels indicating larger values and darker pixels indicating negative values.</p>
-
-        <p>Now that the 10 networks are trained, any input can be sent into each network to get the outputs. These outputs are then input to the <i>softmax</i> function. This function helps interpret the output vector as a list of probabilities for each digit.</p>
+        <p>These weight arrays are calibrated to detect a specific digit. The dot product between the input image and the weights is taken. The greater the overlap between the weights, the larger the result is. The vector of all 10 results is then fed into the <i>softmax</i> function which outputs a probability vector. Last, the digit with the highest probability is selected as the class.</p>
 
         <ImageWithText image={images('./SLP_Flowchart.svg')} text='' width='100%' />
 
@@ -143,6 +156,11 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
         <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
 
         <SLPPlayground width='500' />
+
+
+        <p>Someone observant would notice that the <i>Softmax</i> activation function used for the output layer is not nessesary.</p>
+
+        <p>Fun Fact, according to the <b>Universal Approximation Theorem</b>, any function can be represented as an artificial neural network! <i style={{fontSize:'.75em'}}>(given enough complexity)</i></p>
 
         <EoFPadding length='20' />
       </div>

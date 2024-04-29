@@ -74,7 +74,7 @@ class SLPPlayground extends React.Component {
         const grid_unit_x = Math.round(this.myRef.width / partition_w);
         const grid_unit_y = Math.round(this.myRef.height / partition_h);
 
-        const X = Array(partition_w * partition_h);
+        const X = Array(partition_w * partition_h + 1);
 
         for (let i = 0; i < partition_w; i++) {
 
@@ -93,6 +93,7 @@ class SLPPlayground extends React.Component {
 
                 X[(j * partition_w) + i] = val;
             }
+            X[X.length - 1] = 1
         }
 
         this.predict(X);
@@ -100,24 +101,6 @@ class SLPPlayground extends React.Component {
 
     predict(X) {
         const dot = (a, b) => a.map((x, i) => a[i] * b[i]).reduce((m, n) => m + n);
-        const sigmoid = (x) => { return (1 / (1 + Math.exp(-x))); }
-
-        const softmax = (a) => {
-            let tmp = Array(a.length);
-            let denom = 0;
-            for (let i = 0; i < a.length; i++) {
-                tmp[i] = Math.exp(a[i]);
-                denom += tmp[i];
-            }
-
-            let result = Array(a.length);
-
-            for (let i = 0; i < a.length; i++) {
-                result[i] = tmp[i] / denom;
-            }
-
-            return result;
-        }
 
         const weights = [w0, w1, w2, w3, w4, w5, w6, w7, w8, w9];
 
@@ -125,15 +108,11 @@ class SLPPlayground extends React.Component {
 
         weights.forEach((element, i) => dots[i] = dot(element, X));
 
-        let sigs = Array(weights.length);
+        let prediction = indexOfMax(dots);
 
-        dots.forEach((element, i) => sigs[i] = sigmoid(element));
+        console.log(dots)
 
-        let prediction_vec = softmax(sigs);
-
-        let prediction = indexOfMax(prediction_vec);
-
-        console.log(prediction, sigs);
+        console.log("Number: ", prediction)
     }
 
     render() {
