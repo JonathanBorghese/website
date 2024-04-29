@@ -21,9 +21,9 @@ function Navbar() {
         <Link to='blog' style={linkStyle}>Blog</Link>
       </button>
       }
-      <button className="nav-button">
+      {/* <button className="nav-button">
         <Link to='' style={linkStyle}>Home</Link>
-      </button>
+      </button> */}
     </div>
   );
 }
