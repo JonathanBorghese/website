@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
 
 import './css/index.css';
 import SLPBlog from './routes/Blogs/SLP'
@@ -9,9 +9,9 @@ import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
 import Resume from './routes/Resume';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: process.env.PUBLIC_URL,
+    path: '/',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <SLPBlog />
       }
     ],
-  }, { basename: '' },
+  }, { basename: process.env.PUBLIC_URL },
 ]);
 
 
