@@ -9,9 +9,11 @@ import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
 import Resume from './routes/Resume';
 
+//process.env.PUBLIC_URL
+
 const router = createBrowserRouter([
   {
-    path: process.env.PUBLIC_URL + '/',
+    path: '/website',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
@@ -28,11 +30,13 @@ const router = createBrowserRouter([
         element: <SLPBlog />
       }
     ],
-  }, { basename: '/website' },
+  }, { basename: '' },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render (
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
