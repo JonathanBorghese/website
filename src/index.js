@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 import './css/index.css';
 import SLPBlog from './routes/Blogs/SLP'
@@ -16,7 +16,7 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'home',
+        path: '',
         element: <Home />,
         index: true
       },
