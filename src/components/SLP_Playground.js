@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '@mui/material/Button';
+
 import w0 from './SLP_Data/w0.js';
 import w1 from './SLP_Data/w1.js';
 import w2 from './SLP_Data/w2.js';
@@ -32,6 +34,16 @@ function indexOfMax(arr) {
 }
 
 class SLPPlayground extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.prob = Array(10);
+
+        this.state = {
+            prob: Array(0,0,0,0,0,0,0,0,0,0)
+        };
+    }
 
     componentDidMount() {
         this.ctx = this.myRef.getContext('2d');
@@ -108,24 +120,54 @@ class SLPPlayground extends React.Component {
 
         weights.forEach((element, i) => dots[i] = dot(element, X));
 
+        let prob = Array(weights.length);
+
+        dots.forEach((element, i) => this.prob[i] = Math.exp(element))
+
+        let denom = 0;
+        for (let i = 0; i < this.prob.length; i++) {
+            denom += this.prob[i];
+        }
+
+        for (let i = 0; i < this.prob.length; i++) {
+            this.prob[i] /= denom;
+        }
+
         let prediction = indexOfMax(dots);
 
-        console.log(dots)
-
-        console.log("Number: ", prediction)
+        this.setState((prevState) => ({
+            prob: this.prob
+        }));
     }
 
     render() {
 
+        this.prob = Array(10);
+
         const can = 
             <div>
-                <div ref={(e) => this.myDiv = e} className='Canvas'>
-                    <canvas ref={(e) => this.myRef = e} onMouseDown={this.mouseDown.bind(this)} onMouseMove={this.mouseOver.bind(this)} onMouseUp={this.mouseUp.bind(this)} onMouseEnter={this.mouseEnter.bind(this)} />
+
+                <div style={{display:'flex', justifyContent:'center'}}>
+                    <div ref={(e) => this.myDiv = e} className='Canvas'>
+                        <canvas ref={(e) => this.myRef = e} onMouseDown={this.mouseDown.bind(this)} onMouseMove={this.mouseOver.bind(this)} onMouseUp={this.mouseUp.bind(this)} onMouseEnter={this.mouseEnter.bind(this)} />
+                    </div>
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'auto', marginBottom:'auto', marginRight:'0px', width:'auto', height:'15em', lineHeight:'1.5em'}}>
+                        <div>P(0)={this.state.prob[0].toFixed(2)}</div>
+                        <div>P(1)={this.state.prob[1].toFixed(2)}</div>
+                        <div>P(2)={this.state.prob[2].toFixed(2)}</div>
+                        <div>P(3)={this.state.prob[3].toFixed(2)}</div>
+                        <div>P(4)={this.state.prob[4].toFixed(2)}</div>
+                        <div>P(5)={this.state.prob[5].toFixed(2)}</div>
+                        <div>P(6)={this.state.prob[6].toFixed(2)}</div>
+                        <div>P(7)={this.state.prob[7].toFixed(2)}</div>
+                        <div>P(8)={this.state.prob[8].toFixed(2)}</div>
+                        <div>P(9)={this.state.prob[9].toFixed(2)}</div>
+                    </div>
                 </div>
 
-                <span>
-                    <button onClick={this.clear.bind(this)}>Clear</button>
-                    <button onClick={this.run.bind(this)}>Run</button>
+                <span style={{display:'flex', justifyContent:'center'}}>
+                    <Button variant='outlined' onClick={this.clear.bind(this)}>Clear</Button>
+                    <Button variant='contained' onClick={this.run.bind(this)}>Run</Button>
                 </span>
                 
             </div>

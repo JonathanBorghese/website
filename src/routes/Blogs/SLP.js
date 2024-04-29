@@ -14,16 +14,10 @@ function SLPBlog() {
     <>
       <div className='blog-div'>
         <div>
+          <h1 style={{lineHeight:'1em'}}>Introduction to Single Layer Perceptrons</h1>
           Jonathan Borghese<br></br>
-          April 27th, 2024
+          April 29th, 2024
         </div>
-
-        This Shit is Fucked
-        <div style={{Display:'flex', justifyContent:'center'}}>
-          SLP Blog
-        </div>
-
-        <h2>Introduction</h2>
 
         <p>Machine Learning simply put is the art of approximating functions. Say you want to predict the price of a house given its size, age, location. How much do these variables effect the price of the house? These relationships between variables are what an <i>artificial neural network (ANN)</i> "learns" and manifests through the <i>weights</i> of the network.</p>
 
@@ -64,7 +58,7 @@ function SLPBlog() {
           </div>
         </div>
 
-        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative. The direction of the gradient is the most important part, it is scaled by the <i>Learning Rate</i> of the model.</p>
+        <p>This derivative is specific to our SLP and changes based on the structure, activation functions, and loss function used. For more complex networks with multiple layers, a technique called <i>Backpropagation</i> is used to efficiently calculate the derivative. The direction of the gradient is the part we are most interested in; the magnitude of the gradient is scaled by the <i>Learning Rate</i> of the model.</p>
 
         <ImageWithText image={images('./Weight_Update.svg')} width='500px' text="Weight adjustment is scaled by α, the learning rate" />
 
@@ -166,7 +160,7 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
 
         <p>Fun Fact, according to the <b>Universal Approximation Theorem</b>, any function can be represented as an artificial neural network! <i style={{fontSize:'.75em'}}>(given enough complexity)</i></p>
 
-        <EoFPadding length='20' />
+        <EoFPadding length='10' />
       </div>
     </>
   );
