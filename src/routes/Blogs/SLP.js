@@ -148,9 +148,10 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
         <ImageWithText image={images('./SLP_Flowchart.svg')} text='The more overlap there is between the input feature, X, and the weights, W, the larger the output number is and the higher the resulting probability' width='100%' />
         <br />
 
-        <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
-
         <BrowserView>
+
+          <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
+
           <SLPPlayground width='500' />
         </BrowserView>
 
