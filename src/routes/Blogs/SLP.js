@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import ImageWithText from '../../components/ImageWithText.js'
-import EoFPadding from '../../components/EoFPadding.js'
-import CodeBlock from '../../components/CodeBlock.js'
-import SLPPlayground from '../../components/SLP_Playground.js'
+import {BrowserView, MobileView} from 'react-device-detect';
+
+import ImageWithText from '../../components/ImageWithText.js';
+import EoFPadding from '../../components/EoFPadding.js';
+import CodeBlock from '../../components/CodeBlock.js';
+import SLPPlayground from '../../components/SLP_Playground.js';
 
 import '../../css/Blog.css'
 
@@ -148,7 +150,9 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
 
         <span style={{display:'flex', justifyContent:'center'}}><h1>Try it yourself!</h1></span>
 
-        <SLPPlayground width='500' />
+        <BrowserView>
+          <SLPPlayground width='500' />
+        </BrowserView>
 
         <p>This network works best when the digit is the correct size and centered on the canvas because that is how the training data was preprocessed.</p>
 
