@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {BrowserView, MobileView} from 'react-device-detect';
+import {BrowserView} from 'react-device-detect';
 
 import ImageWithText from '../../components/ImageWithText.js';
 import EoFPadding from '../../components/EoFPadding.js';
