@@ -54,7 +54,7 @@ class SLPPlayground extends React.Component {
 
         let div = this.myDiv.getBoundingClientRect();
 
-        this.ctx.fillRect(e.clientX - div.x, e.clientY - div.y, 10, 10);
+        this.ctx.fillRect(e.clientX - div.x - 16, e.clientY - div.y - 16, 30, 30);
     }
 
     mouseEnter() {
