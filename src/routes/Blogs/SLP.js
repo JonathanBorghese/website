@@ -68,6 +68,12 @@ function SLPBlog() {
         
         <p>Gradient Descent is an art and there is a lot of nuance being left out for simplicity. I suggest reading about <i>Generalization</i>, <i>Stochastic Gradient Descent</i>, and <i>Learning Rate Scheduling</i> to learn more.</p>
 
+        <h3>Weight Constraints</h3>
+
+        <p>One last thing needed to be explained is the use of weight constraints. </p>
+
+        <EoFPadding length='30' />
+
         <p>Now let's put what we've learned to use!</p>
 
         <h2>Handwriting Digit Classifier</h2>
@@ -155,7 +161,7 @@ def fit(self, training_features, training_labels, max_epochs=100, learning_rate=
           <SLPPlayground width='500' />
         </BrowserView>
 
-        <p>This network works best when the digit is the correct size and centered on the canvas because that is how the training data was preprocessed.</p>
+        <p>These outputs can be further improved by processing the input image. The training images were all scaled and centered to the canvas, so the model is only trained to classify images processed the same way.</p>
 
         <h3>Final Thoughts</h3>
 
