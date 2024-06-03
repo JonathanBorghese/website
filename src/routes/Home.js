@@ -1,24 +1,39 @@
 import React from 'react';
 
+import Avatar from '../components/Avatar.js'
+
 import '../css/Home.css'
 
 function Home() {
 
   return (
     <>
+      <b>Under Construction :/</b>
+
       <div className="main-div">
+        <div className="info-div">
+          
+          <div style={{display:'flex', justifyContent:'center'}}>
+            <Avatar />
+          </div>
 
-        <b>Under Construction :/</b>
+          name: Jonathan Borghese
+          <br/>
+          email: jpborghese@gmail.com
+          <br/>
 
-      {/* <h1>Home Page</h1>
 
-        <h3>About Me</h3>
-        <p>I am a </p>
+        </div>
 
-        <h3>Skills</h3>
-        <div className="skills-div">
-          { ["C/C++", "Python", "Java", "JavaScript", "SQL", "Git", "Linux", "Artificial Intelligence", "Machine Learning", "Reinforcement Learning", "Computer Vision", "NodeJS", "Angular", "React", "Pandas", "Scikit Learn", "Tensorflow", "OpenCV", "Keras"].map(name => (<div key={name}><b>{name}</b></div>)) }
-        </div> */}
+
+        <div>
+          <h3>About Me</h3>
+
+          <h3>Skills</h3>
+          <div className="skills-div">
+            { ["C/C++", "Python", "Java", "JavaScript", "SQL", "Git", "Linux", "Artificial Intelligence", "Machine Learning", "Reinforcement Learning", "Computer Vision", "NodeJS", "Angular", "React", "Pandas", "Scikit Learn", "Tensorflow", "OpenCV", "Keras"].map(name => (<div key={name}><b>{name}</b></div>)) }
+          </div>
+        </div>
       </div>
     </>
   );
