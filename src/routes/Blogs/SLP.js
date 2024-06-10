@@ -7,7 +7,7 @@ import EoFPadding from '../../components/EoFPadding.js';
 import CodeBlock from '../../components/CodeBlock.js';
 import SLPPlayground from '../../components/SLP_Playground.js';
 
-import '../../css/Blog.css'
+import '../../css/SLP.css'
 
 const images = require.context('../../images/SLP_Blog', true);
 

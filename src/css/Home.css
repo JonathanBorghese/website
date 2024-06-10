@@ -1,28 +1,79 @@
 
 .main-div {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: auto;
-  padding-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.left-div{
+  width: 35%;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.right-div {
+  display: block;
+  width: 50%;
+  justify-content: left;
+
+  text-align: left;
+}
+
+/* Handheld */
+@media screen and (max-width: 992px) {
+
+  .main-div {
+    flex-direction: column;
+  }
+}
+
+.about-me-div {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 1px 20px 20px 20px;
+  margin: 10px;
+
+  background: linear-gradient(#A0C3D5, #9198e5);
+  border-radius: 2px;
+  box-shadow: 5px 5px black;
 }
 
 .skills-div {
-  display: flex;
-  flex-flow: column wrap;
-  height: 250px;
-  overflow: auto;
+  display: inline-block;
+  width: 100%;
+  padding: 1px 20px 20px 20px;
+  margin: 10px;
+
+  background: linear-gradient(#a5c9db, #9198e5);
+  border-radius: 2px;
+  box-shadow: 5px 5px black;
 }
 
-.skills-div > div {
-  display:block;
-  background: linear-gradient(#A0C3D5, #9198e5);
+.inline-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  border-radius: 25px;
-  box-shadow: 2px 2px black;
-
-  text-align: center;
-  padding: 10px;
   margin: 10px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.icon-style {
+  display: inline;
+  width: 4ch;
+  padding-top: 1ch;
+}
+
+.selfie {
+  display: flex;
+  justify-content: center;
+
+  padding: 30px;
+  background-color: gray;
+  border-radius: 5px;
+  box-shadow: 5px 5px black;
+}
