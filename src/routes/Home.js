@@ -1,9 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+import EoFPadding from '../components/EoFPadding.js'
 import selfie from '../images/Other/me.jpg';
-import mail_icon from '../images/Mail-Icon.svg';
-import git_icon from '../images/Git-Icon-Black.svg';
-import resume_icon from '../images/Resume-Icon.svg';
 
 import '../css/Home.css'
 
@@ -12,66 +11,69 @@ function Home() {
   return (
     <>
 
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', fontFamily:'Roboto-Black-Italic', fontSize: '6ch'}}>
+        <h1>Jonathan Borghese</h1>
+      </div>
+
       <div className="main-div">
         <div className="left-div">
           
           <div style={{display:'flex', justifyContent:'center'}}>
-            <img src={selfie} alt="selfie" className='selfie'/>
+            <img src={selfie} alt="selfie" className='selfie' />
           </div>
 
-          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-
-            <p>Jonathan Borghese</p>
-
-            <p>Check out my posts here!</p>
-
-            <button>asdf</button>
-            <button>asdf</button>
-            <button>asdf</button>
-            <button>asdf</button>
-          </div>
-
-
+          <h1>Hobbies</h1>
+          <ul>
+            <li><b>Soccer: </b>Lifelong soccer player</li>
+            <li><b>Piano: </b>I'm a self taught pianist</li>
+            <li><b>Video Games: </b>Gamin with the boys is always a good time</li>
+          </ul>
         </div>
 
 
         <div className="right-div">
-          <div className='about-me-div'>
-            <h3 style={{textAlign:'center'}}>About Me</h3>
-            <p>Welcome! I’m <b>Jonathan Borghese</b>, a dedicated and passionate computer engineer with a knack for solving complex problems and a love for everything AI. I have a solid foundation in software development and a wide range of abilities. I specialize in designing and implementing cutting-edge solutions that drive efficiency and performance.</p>
-          </div>
+          
+          <h1>About Me</h1>
+          <p>Welcome! I’m <b>Jonathan Borghese</b>, a dedicated and passionate computer engineer with a knack for solving complex problems and a love for everything AI. I have a solid foundation in software development and a wide range of abilities. I specialize in designing and implementing cutting-edge solutions that drive efficiency and performance.</p>
 
+          <h1>Background</h1>
+          <p>I hold a degree in <b>Computer Engineering</b> and a minor in <b>Computer Science</b> from Virginia Tech. I am a lifelong programming hobbyist with a passion for making things through code. Over the years, I've worked on variety of projects such as web development, IoT integration, 3D game engine optimizations.</p>
 
-          <div className='skills-div'>
-            <span><h3 style={{textAlign:'center'}}>Skills</h3></span>
+          <h1>Skills</h1>
 
-            <div style={{display: 'flex', justifyContent:'space-between', flexWrap: 'wrap'}}> { ["C/C++", "Python", "Java", "JavaScript", "SQL", "Git", "Linux", "Artificial Intelligence", "Machine Learning", "Reinforcement Learning", "Computer Vision", "NodeJS", "Angular", "React", "Pandas", "Scikit Learn", "Tensorflow", "OpenCV", "Keras"].map(name => (<div key={name} className='skill-div'><b>{name}</b></div>)) }
-            </div>
-          </div>
+          <ul>
+            <li><b>Languages: </b> C/C++, Java, Javascript, Python, SQL</li>
+            <li><b>Web Dev: </b> TypeScript, HTML, CSS, AngularJS, React</li>
+            <li><b>AI: </b>LangChain, Scikit Learn, TensorFlow, OpenCV, Keras</li>
+            <li><b>Misc: </b>MQTT, Git, MonogDB, VirtualBox, Linux Kernel Programming</li>
+          </ul>
 
+          <h1>Projects</h1>
 
-          <div className='connect-div'>
-
-              <h3>Contacts</h3>
-
-            <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <div className='inline-info'>
-                <img src={git_icon} alt='' style={{display: 'inline', width: '5ch', paddingTop: '1ch'}}/> <a href='https://github.com/JonathanBorghese'>GitHub</a>
-              </div>
-
-              <div className='inline-info'>
-                <img src={mail_icon} alt='' style={{display: 'inline', width: '5ch', paddingTop: '1ch'}}/>JPBorghese@gmail.com
-              </div>
-
-              <div className='inline-info'>
-                <img src={resume_icon} alt='' style={{display: 'inline', width: '5ch', paddingTop: '1ch'}}/>Resume
-              </div>
-            </div>
-           
-          </div>
+          <ul>
+            <li><b>3D Voxel Engine - </b>Custom Built and optimized voxel terrain engine with the ability to efficiently remove terrain and optimized for performance</li>
+            <li><b>Discord Bot - </b>A completely personalized discord bot created using the python discord API</li>
+            <li><b>Ascii Tetris - </b>Tetris made only from the output of the command prompt</li>
+            <li><b>Valve Hammer Mapping - </b>Maps created using valve hammer editor</li>
+            <li><b>My Website - </b>This website :) The goal is to better document my projects and be able to share them</li>
+          </ul>
 
         </div>
       </div>
+
+      <div style={{display:'flex', justifyContent:'center', textAlign: 'center', flexDirection:'column'}}>
+        <h1>Get in Touch!</h1>
+        
+        <div style={{display:'flex', justifyContent:'center',}}>
+          <h2>JPBorghese@gmail.com </h2>
+          <a href="https://github.com/JonathanBorghese?tab=repositories" style={{paddingLeft:'20px'}}><h2>GitHub</h2></a>
+          <Link to='resume' style={{paddingLeft:'20px'}}><h2>Resume</h2></Link>
+          <a href="https://www.linkedin.com/in/jonathan-borghese-2291981b7/" style={{paddingLeft:'20px'}}><h2>Linkedin</h2></a>
+        </div>
+
+      </div>
+
+      <EoFPadding length='10' />
     </>
   );
 }

@@ -6,29 +6,25 @@
 }
 
 .left-div{
-  width: 40%;
+  width: 35%;
   padding: 10px;
-  margin: 10px;
+  margin-left: 15px;
 }
 
-.selfie {
-  border-radius: 5px;
+.right-div {
+  display: block;
+  width: 50%;
+  justify-content: left;
+
+  text-align: left;
 }
 
 /* Handheld */
 @media screen and (max-width: 992px) {
 
   .main-div {
-    display: block;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
   }
-
-}
-
-.right-div {
-  width: 50%;
-  display: block;
 }
 
 .about-me-div {
@@ -54,31 +50,6 @@
   box-shadow: 5px 5px black;
 }
 
-.skill-div {
-  width: 25%;
-  text-align: center;
-}
-
-.skill-div > span {
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
-.connect-div {
-  display: block;
-  text-align: center;
-  width: 100%;
-  padding: 1px 20px 20px 20px;
-  margin: 10px;
-
-  background: linear-gradient(#0e9ce4, #9198e5);
-  border-radius: 2px;
-  box-shadow: 5px 5px black;
-}
-
 .inline-info {
   display: flex;
   justify-content: center;
@@ -89,4 +60,20 @@
 
 a {
   text-decoration: none;
+}
+
+.icon-style {
+  display: inline;
+  width: 4ch;
+  padding-top: 1ch;
+}
+
+.selfie {
+  display: flex;
+  justify-content: center;
+
+  padding: 30px;
+  background-color: gray;
+  border-radius: 5px;
+  box-shadow: 5px 5px black;
 }
