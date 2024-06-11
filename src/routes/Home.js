@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import BlogButton from '../components/BlogButton.js'
 import EoFPadding from '../components/EoFPadding.js'
 import selfie from '../images/Other/me.jpg';
 
@@ -12,7 +13,7 @@ function Home() {
     <>
 
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', fontFamily:'Roboto-Black-Italic', fontSize: '6ch'}}>
-        <h1>Jonathan Borghese</h1>
+        <h1 style={{textAlign:'center'}}>Jonathan Borghese</h1>
       </div>
 
       <div className="main-div">
@@ -34,7 +35,7 @@ function Home() {
         <div className="right-div">
           
           <h1>About Me</h1>
-          <p>Welcome! I’m <b>Jonathan Borghese</b>, a dedicated and passionate computer engineer with a knack for solving complex problems and a love for everything AI. I have a solid foundation in software development and a wide range of abilities. I specialize in designing and implementing cutting-edge solutions that drive efficiency and performance.</p>
+          <p>Welcome! I’m <b>Jonathan Borghese</b>, a dedicated and passionate computer engineer skilled with solving complex problems and a love for everything AI. I have a solid foundation in software development and a wide range of abilities.</p>
 
           <h1>Background</h1>
           <p>I hold a degree in <b>Computer Engineering</b> and a minor in <b>Computer Science</b> from Virginia Tech. I am a lifelong programming hobbyist with a passion for making things through code. Over the years, I've worked on variety of projects such as web development, IoT integration, 3D game engine optimizations.</p>
@@ -71,6 +72,10 @@ function Home() {
           <a href="https://www.linkedin.com/in/jonathan-borghese-2291981b7/" style={{paddingLeft:'20px'}}><h2>Linkedin</h2></a>
         </div>
 
+      </div>
+
+      <div>
+        <BlogButton title='SLP' />
       </div>
 
       <EoFPadding length='10' />
