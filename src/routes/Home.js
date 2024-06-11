@@ -69,13 +69,15 @@ function Home() {
           <h2>JPBorghese@gmail.com </h2>
           <a href="https://github.com/JonathanBorghese?tab=repositories" style={{paddingLeft:'20px'}}><h2>GitHub</h2></a>
           <Link to='resume' style={{paddingLeft:'20px'}}><h2>Resume</h2></Link>
-          <a href="https://www.linkedin.com/in/jonathan-borghese-2291981b7/" style={{paddingLeft:'20px'}}><h2>Linkedin</h2></a>
+          <a href="https://www.linkedin.com/in/jonathan-borghese-2291981b7/" style={{paddingLeft:'20px'}}><h2>LinkedIn</h2></a>
         </div>
 
       </div>
 
-      <div>
-        <BlogButton title='SLP' />
+      <h1 style={{textAlign:'center'}}>Check out my Posts!</h1>
+
+      <div style={{display:'flex', justifyContent:'center'}}>
+        <BlogButton title='Intro to Single Layer Perceptrons' to='SLP_blog'/>
       </div>
 
       <EoFPadding length='10' />

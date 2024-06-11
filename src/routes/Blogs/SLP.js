@@ -72,8 +72,6 @@ function SLPBlog() {
 
         <p>One last thing needed to be explained is the use of weight constraints. </p>
 
-        <EoFPadding length='30' />
-
         <p>Now let's put what we've learned to use!</p>
 
         <h2>Handwriting Digit Classifier</h2>

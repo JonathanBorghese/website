@@ -96,10 +96,19 @@
   .blog-button {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
 
     width: 40%;
+    height: 100px;
 
-    background: linear-gradient(#A0C3D5, #9198e5);
+    background: #95a8e2;
     border-radius: 2px;
     box-shadow: 5px 5px black;
+  }
+
+  .blog-button:hover {
+
+    background: #a7bcfa;
   }

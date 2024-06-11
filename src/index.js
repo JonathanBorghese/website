@@ -25,7 +25,7 @@ const router = createHashRouter([
         element: <Resume />,
       },
       {
-        path: 'blog',
+        path: 'SLP_blog',
         element: <SLPBlog />
       }, 
       {
