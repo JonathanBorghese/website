@@ -4,6 +4,7 @@ import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
 
 import './css/index.css';
 import SLPBlog from './routes/Blogs/SLP'
+import VoxelBlog from './routes/Blogs/VoxelEngine';
 import Root from './routes/Root';
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
@@ -28,6 +29,10 @@ const router = createHashRouter([
         path: 'SLP_blog',
         element: <SLPBlog />
       }, 
+      {
+        path: 'Voxel_blog',
+        element: <VoxelBlog />,
+      },
       {
         path: '*',
         element: <Navigate to='/' />
