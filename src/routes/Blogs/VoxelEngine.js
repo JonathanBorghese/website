@@ -34,15 +34,19 @@ function VoxelBlog() {
 
             <p>The Naive Approach is to simply draw every block. The benefit of this is that it is easy to implement, and terrain modification does not require any recomputing of the mesh triangles and vertices. The downside is obviously that it is very inefficient. The majority of the triangles drawn are not exposed and therefore is wasted performance. </p>
 
-            <p>Say we have a 16 x 16 x 16 chunk. That means there are 4096 blocks or <b>65536 Triangles</b></p>
+            <p>Say we have a 16 x 16 x 16 chunk. That means there are 4096 blocks or <b>49152 Triangles</b></p>
 
             <h2>Culled Meshing</h2>
 
-            <p>Culled Meshing is the same as the Naive approach except faces are not drawn unless they are exposed. This is done by only drawing faces that are at the intersection between 'off' and 'on' voxels. </p>
-
-            <p>Pseudo Code here</p>
+            <p>Culled Meshing is the same as the Naive approach except faces are not drawn unless they are exposed. This is done by only drawing faces that are at the intersection between 'off' and 'on' voxels. The vast majority of faces are not being shown and thus this improves optimization. Best case senario for a 16x16x16 chunk is <b>3072 Triangles</b> and the worst case is <b>24576 Triangles</b>. This is a <b>%50-95</b> reduction of triangles! This is great and all but we can do better.</p>
 
             <h2>Greedy Meshing</h2>
+
+            <p>Greedy Meshing is a technique of combining faces of adjacent blocks. Take a look at the following chunk:</p>
+
+            <p>The face of this chunk can be simplified into this:</p>
+
+            <p>Here is the pseudo code for Greedy Meshing</p>
 
             <h2>Implementation in Unreal Engine 5</h2>
 
