@@ -69,7 +69,7 @@ function VoxelBlog() {
 
             <p>How the algorithm works: First, take the first face of a mesh. Expand the face in one direction as much as it can. Faces that have already been visited or faces that don't exist stop this expansion. Next, expand the collective faces in the other direction as much as they can. Find the next face that hasn't been visited and repeat this process until all faces on the current plane has been visited. After that is done, repeat this process for each plane of chunk.</p>
 
-            <p>For a 4x4x4 chunk, there will be 4 XY planes, 4 XZ Planes, and 4 YZ Planes so this process is done 12 times. Each time the mesh is modified, this process needs to be repeated as well; therefore, smaller chunk sizes are preferred to minimize the impact of this algorithm.</p>
+            <p>For a 4x4x4 chunk, depending on the implementation, this process is done 15 times; once for each plane (XY, XZ, YZ) of the chunk. Each time the mesh is modified, this process also needs to be repeated as well; therefore, smaller chunk sizes are preferred to minimize the impact of this algorithm.</p>
 
             <p>For a nice demonstration, I would suggest this blog: <a href="https://devforum.roblox.com/t/consume-everything-how-greedy-meshing-works/452717">How Greedy Meshing Works</a></p>
 
