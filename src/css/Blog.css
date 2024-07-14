@@ -2,16 +2,18 @@
 .blog-div {
     background-color:white;
     margin-inline: auto;
-    width: 45%;
+    width: 50%;
+    max-width: 60em;
 
     padding: 50px;
-    font-size: 1.25em;
-    line-height:1.25em;
+    font-size: 1em;
+    line-height:1.5em;
 }
 
 @media screen and (max-width: 992px){
     .blog-div {
-        width:100%;
+        width:80%;
+        margin: 0 auto 0 auto;
     }
 }
 

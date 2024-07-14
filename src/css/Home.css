@@ -27,11 +27,15 @@
 
   .right-div {
     justify-content: center;
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .left-div {
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
