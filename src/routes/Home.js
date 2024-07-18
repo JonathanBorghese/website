@@ -78,7 +78,8 @@ function Home() {
 
       <div style={{display:'flex', justifyContent:'center'}}>
         <BlogButton title='Intro to Single Layer Perceptrons' to='SLP_blog'/>
-        <BlogButton title='My Voxel Engine' to='Voxel_blog' />
+        <BlogButton title='Voxel Engine' to='Voxel_blog' />
+        <BlogButton title='Minecraft Server on AWS' to='Server_blog'/>
       </div>
 
       <EoFPadding length='10' />
