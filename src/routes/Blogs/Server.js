@@ -1,8 +1,11 @@
 import React from 'react';
 
+import ImageWithText from '../../components/ImageWithText';
 import EoFPadding from '../../components/EoFPadding';
 
 import '../../css/Blog.css';
+
+const images = require.context('../../images/Server_Blog', true);
 
 
 function ServerBlog() {
@@ -25,26 +28,32 @@ function ServerBlog() {
 
             <p>You are now ready to configure your instance. Name the instance <b>My Minecraft Server</b> and make sure the OS is <i><b>Amazon Linux 2023 AMI.</b></i></p>
 
+            <ImageWithText image={images('./Instance_Name.PNG')} width='90%' />
+
+            <ImageWithText image={images('./Instance_OS.PNG')} width='90%' />
+
             <h3>Choosing Instance Type</h3>
 
             <p>By default, the instance type is <i><b>t2.micro</b></i>. In my experience, this is not strong enough to support even 2 players. I would go with at least <i><b>t2.small</b></i> or better depending on the number of expected players; however, this tier is not free and will cost ~$0.015 an hour.</p>
+
+            <ImageWithText image={images('./Instance_Type.PNG')} width='90%' />
+
+            <h3>Network Settings</h3>
+
+            <p>In the Network Settings, click <i>Edit</i>, scroll down and make sure you have both of these security group rules:</p>
+
+            <ImageWithText image={images('./Instance_Security_Group.PNG')} width='90%' />
+
+            <p>All other options can be kept default. We are now ready to click <i><b>Launch Instance</b></i></p>
 
             <h2>Setup Minecraft Server on Instance</h2>
 
             <p>To start the server, navigate back to the Instance tab in EC2, click the checkmark next to your running instance, click the <i><b>Instance State</b></i> button near the top right and click <i><b>Start Instance.</b></i></p>
             <p>Note: To stop the instance, do the same thing but click <i><b>Stop Instance</b></i> instead. You are only billed for the time the instance is running so make sure to stop it whenever the server is not being used. </p>
 
-            <h3>SSH into Instance</h3>
-
-            <p>Here is the command for using ssh to access Instance:</p>
-
-            <div className="code-snip">ssh -i (.pem filepath) ec2-user@(instance IPv4)</div>
-
-            <p>This is where the Key Pair file comes into play. This file is used in place of a password.</p>
-
             <h3>EC2 Instance Connect</h3>
 
-            <p>This is an alternative to SSH to access instance. Once an instance is running, select it and click the <b>Connect</b> button. Keep the default params and click Connect. You then have an online terminal to the instance.</p>
+            <p>This is an alternative to SSH to access instance that we will be using. Once an instance is running, select it and click the <b>Connect</b> button. Keep the default params and click Connect. You then have an online terminal to the instance.</p>
 
             <h3>Setting up Server</h3>
 
@@ -54,7 +63,7 @@ function ServerBlog() {
 
             <p>This will install the latest version of java. This is necessary for running the server jar file.</p>
 
-            <div className="code-snip">adduser minecraft<br/>
+            <div className="code-snip">sudo adduser minecraft<br/>
             sudo -i -u minecraft<br/>
             cd ~</div>
 
@@ -70,15 +79,19 @@ function ServerBlog() {
 
             <p>All that needs to be done now is running it using this command:</p>
 
-            <div className="code-snip">java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui</div>
+            <div className="code-snip">java -Xmx1024M -Xms1024M -jar server.jar nogui</div>
 
-            <p>Replace <i><b>minecraft_server.jar</b></i> with the name of your jar file as the version number changes the file name.</p>
+            <p>Replace <i><b>server.jar</b></i> with the name of your jar file as the file name might not be the same.</p>
 
             <p>The first time you run this, it will ask you to accept the EULA. This is done by changing the <i><b>False</b></i> to <i><b>True</b></i> in the EULA.txt file created.</p>
+
+            <ImageWithText image={images('./EULA.PNG')} width='90%' />
 
             <p>Once that's done, simply run the java command again and your good to go! Server commands can be typed out in the current terminal and the connection IP address is: <b>(Instance IPv4):25565</b></p>
 
             <p>Note: The IPv4 address will change every time the instance is shutdown and started again. There is a method for keeping a single IP address for an instance using something called <i><b>Elastic IPs.</b></i></p>
+
+            <p>Congratulations! You now have your own minecraft server.</p>
 
 
             <EoFPadding length='10' />
