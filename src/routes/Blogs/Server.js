@@ -15,7 +15,7 @@ function ServerBlog() {
             <div>
                 <h1 style = {{lineHeight:'1em'}}>Minecraft Server using AWS</h1>
                 Jonathan Borghese<br/>
-                July 17th, 2024
+                July 18th, 2024
             </div>
 
             <p>This post outlines the steps in order to make a Minecraft server using Amazon's EC2 Service. Disclaimer, this will cost around $0.01 - $0.05 an hour to run depending on how strong you want it to be.</p>
@@ -50,6 +50,8 @@ function ServerBlog() {
 
             <p>To start the server, navigate back to the Instance tab in EC2, click the checkmark next to your running instance, click the <i><b>Instance State</b></i> button near the top right and click <i><b>Start Instance.</b></i></p>
             <p>Note: To stop the instance, do the same thing but click <i><b>Stop Instance</b></i> instead. You are only billed for the time the instance is running so make sure to stop it whenever the server is not being used. </p>
+
+            <ImageWithText image={images('./Instance_Start.PNG')} width='90%' />
 
             <h3>EC2 Instance Connect</h3>
 
