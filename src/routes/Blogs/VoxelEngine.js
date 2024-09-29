@@ -21,9 +21,9 @@ function VoxelBlog() {
 
             <h2>What is a Voxel?</h2>
 
-            <p>A voxel is a point in 3d space, aligned to a grid. The metadata saved at each point changes for each use case but when it comes to collision, it is either on or off.</p>
+            <p>A voxel is a point in 3d space, aligned to a grid. The metadata saved at each point changes for each use case but when it comes to collision, it is either on or off. A voxel engine is a world made of voxels. The most popular example of a procedural voxel generation is <i>Minecraft.</i></p>
 
-            <p>The most popular example of a procedural voxel generation is <i>Minecraft.</i></p>
+            <p>Consider a collection of voxels in 3D space. What is the minimum amount of triangles and vertices it would take to draw? Solving this problem would lead to a more efficient engine.</p>
 
             <h2>Making a Cube</h2>
 
@@ -35,7 +35,7 @@ function VoxelBlog() {
 
             <h2>Making a Chunk</h2>
 
-            <p>Typically, the world is subdivided into chunks, each chunk holding a grid of voxels. This allows only part of the world to be loaded at a single time as well as makes parallel loading of the world easy to implement. From here on, I will be talking at the chunk level when it comes to optimization.</p>
+            <p>Typically, the world is subdivided into chunks, each chunk holding a grid of voxels. This allows only part of the world to be loaded at a single time as well as makes parallel loading of the world easy to implement. Now consider a chunk, which is a collection of voxels, what is the most efficient way of drawing it?</p>
 
             <h2>Naive Approach</h2>
 
